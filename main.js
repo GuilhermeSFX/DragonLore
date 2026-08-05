@@ -112,6 +112,56 @@ const initialContent = [
   }
 ];
 
+const phaseTwoContent = [
+  ["Hospital Peking Union Medical College", "Beijing", "servicos", "Hospitais", "Hospital de referencia no distrito de Dongcheng.", "Opcao de referencia para atendimentos hospitalares em Beijing. Antes de uma viagem, confirme idiomas atendidos, horarios e cobertura do seu seguro.", "Peking Union Medical College Hospital Beijing"],
+  ["Farmacia Tong Ren Tang", "Beijing", "servicos", "Farmacias", "Rede tradicional de farmacia e medicina chinesa.", "A Tong Ren Tang e conhecida por sua historia ligada a medicina tradicional chinesa. Para medicamentos, procure sempre orientacao profissional e observe as regras locais.", "Tong Ren Tang Beijing"],
+  ["Delegacia de Policia de Dongcheng", "Beijing", "servicos", "Delegacias", "Referencia de seguranca publica na regiao central.", "Este registro representa o tipo de ponto de apoio policial que deve ser identificado pelo visitante. Em emergencias, use os canais oficiais locais.", "Dongcheng Public Security Bureau Beijing"],
+  ["Corpo de Bombeiros de Shanghai", "Shanghai", "servicos", "Bombeiros", "Servico de resposta a incendios e emergencias.", "Os bombeiros integram a rede de emergencia da cidade. Mantenha os numeros locais de emergencia acessiveis durante seus deslocamentos.", "Shanghai Fire and Rescue"],
+  ["Banco da China - Wangfujing", "Beijing", "servicos", "Bancos", "Agencia bancaria em uma area comercial central.", "Uma referencia para servicos bancarios e cambio. Verifique documentos necessarios, taxas e horarios antes de se dirigir a uma agencia.", "Bank of China Wangfujing Beijing"],
+  ["Correio de Beijing", "Beijing", "servicos", "Correios", "Servico postal para correspondencias e encomendas.", "O correio e util para enviar cartoes, documentos e encomendas. Consulte previamente os limites e as regras de itens internacionais.", "China Post Beijing"],
+  ["Metro de Shanghai", "Shanghai", "servicos", "Transporte Publico", "Rede essencial para deslocamentos pela cidade.", "O metro conecta bairros, centros comerciais e atracoes. Planeje a rota com antecedencia e mantenha o destino escrito em caracteres locais quando possivel.", "Shanghai Metro"],
+  ["Aeroporto Internacional de Beijing Capital", "Beijing", "servicos", "Aeroportos", "Um dos principais acessos aereos da capital.", "O aeroporto oferece conexoes nacionais e internacionais. Consulte terminais, regras de bagagem e opcoes de transporte para o centro da cidade.", "Beijing Capital International Airport"],
+  ["Rodoviaria de Shanghai", "Shanghai", "servicos", "Rodoviarias", "Ponto de partida para viagens terrestres regionais.", "As rodoviarias conectam Shanghai a cidades proximas. Confirme qual terminal atende sua rota, o horario de embarque e os documentos exigidos.", "Shanghai Long-Distance Bus Station"],
+
+  ["Linha do tempo das dinastias chinesas", "Nacional", "curiosidades", "Linha do Tempo", "Panorama dos principais periodos dinasticos.", "Uma linha do tempo ajuda a situar mudancas politicas, culturais e tecnologicas desde as primeiras dinastias ate a China contemporanea.", "China dynasties timeline"],
+  ["Qin Shi Huang", "Xi'an", "curiosidades", "Personagens Historicos", "Primeiro imperador da China unificada.", "Qin Shi Huang e associado a unificacao de reinos, padronizacoes administrativas e ao mausoleu guardado pelo Exercito de Terracota.", "Mausoleum of the First Qin Emperor Xi'an"],
+  ["Grande Muralha da China", "Beijing", "curiosidades", "Monumentos", "Conjunto de fortificacoes que atravessa diferentes regioes.", "A Grande Muralha foi construida e ampliada em diversos periodos. Seus trechos revelam estrategias de defesa, trabalho coletivo e a diversidade da paisagem chinesa.", "Great Wall of China Beijing"],
+  ["Fundacao da Republica Popular da China", "Beijing", "curiosidades", "Eventos Marcantes", "Marco politico celebrado em 1949.", "A proclamacao da Republica Popular da China, em 1949, redefiniu a organizacao politica do pais e permanece como uma referencia central da historia contemporanea.", "Tiananmen Square Beijing"],
+
+  ["Jiaozi", "Nacional", "culinaria", "Pratos Tipicos", "Pasteis recheados servidos em reunioes familiares.", "Os jiaozi podem receber diferentes recheios e sao preparados cozidos, no vapor ou fritos. Eles aparecem com frequencia em celebracoes, especialmente no Ano Novo Lunar.", "jiaozi Chinese dumplings"],
+  ["Pimenta-de-Sichuan", "Sichuan", "culinaria", "Ingredientes", "Especiaria conhecida pela sensacao caracteristica na boca.", "A pimenta-de-Sichuan e um ingrediente importante de preparos da regiao. Seu aroma citrico e sua sensacao levemente anestesiante marcam muitos pratos locais.", "Sichuan pepper"],
+  ["Historia do Pato Laqueado de Beijing", "Beijing", "culinaria", "Historia dos Pratos", "Receita ligada a tecnicas imperiais de assar aves.", "O pato laqueado de Beijing ganhou fama por sua pele crocante e pelo modo de servico em fatias, acompanhadas de panquecas, molho e vegetais.", "Peking duck Beijing"],
+  ["Quanjude", "Beijing", "culinaria", "Restaurantes Recomendados", "Restaurante tradicional conhecido pelo pato laqueado.", "Quanjude e uma referencia gastronomica para experimentar pato laqueado em Beijing. Verifique unidades, reservas e horarios antes da visita.", "Quanjude Beijing"],
+  ["Baijiu", "Nacional", "culinaria", "Bebidas", "Destilado tradicional feito de graos.", "O baijiu possui estilos variados conforme a regiao e costuma acompanhar banquetes e brindes. Consuma com responsabilidade e conheca o teor alcoolico antes de provar.", "baijiu"],
+  ["Mooncake", "Nacional", "culinaria", "Doces", "Doce tradicional associado ao Festival do Meio Outono.", "Os mooncakes sao bolos recheados, muitas vezes compartilhados em familia durante o Festival do Meio Outono. Os sabores e formatos variam entre regioes.", "mooncake China"],
+
+  ["Museu Nacional da China", "Beijing", "turismo", "Museus", "Museu dedicado a historia e cultura chinesas.", "Localizado na Praca Tiananmen, o museu reune acervos que ajudam a compreender longos periodos da historia do pais. Consulte exposicoes e necessidade de reserva.", "National Museum of China Beijing"],
+  ["Catedral de Xujiahui", "Shanghai", "turismo", "Igrejas", "Igreja catolica de destaque no distrito de Xuhui.", "A Catedral de Xujiahui e uma referencia da arquitetura religiosa em Shanghai. Respeite os horarios de culto e as orientacoes de visita.", "Xujiahui Cathedral Shanghai"],
+  ["Praca Tiananmen", "Beijing", "turismo", "Pracas", "Grande praca publica no centro de Beijing.", "A Praca Tiananmen esta cercada por marcos civicos e culturais. Planeje a visita considerando controles de acesso, seguranca e a movimentacao do local.", "Tiananmen Square Beijing"],
+  ["Parque Beihai", "Beijing", "turismo", "Parques", "Parque imperial com lago e pavilhoes historicos.", "O Parque Beihai combina jardins, arquitetura tradicional e vistas sobre o lago. E uma opcao para caminhar e observar a paisagem historica de Beijing.", "Beihai Park Beijing"],
+  ["Trilha do Monte Huangshan", "Huangshan", "turismo", "Trilhas", "Caminhos entre picos, pinheiros e formacoes rochosas.", "As trilhas de Huangshan exigem planejamento por causa dos desníveis e do clima. Use calcados adequados, leve agua e acompanhe os avisos de seguranca.", "Huangshan Mountain trails"],
+  ["Mirante da Torre de Shanghai", "Shanghai", "turismo", "Mirantes", "Vista panoramica da cidade a partir de Pudong.", "O observatorio da Torre de Shanghai permite observar o rio Huangpu e a paisagem urbana. Confirme condicoes de visibilidade e disponibilidade de ingressos.", "Shanghai Tower Observatory"],
+  ["Cachoeira Huangguoshu", "Anshun", "turismo", "Cachoeiras", "Uma das cachoeiras mais conhecidas da China.", "A Cachoeira Huangguoshu integra uma area natural com passarelas e mirantes. A experiencia varia conforme a estacao e o volume de agua.", "Huangguoshu Waterfall"],
+
+  ["Ano Novo Lunar", "Nacional", "tradicoes", "Festas Populares", "Principal celebracao familiar do calendario lunar.", "O Ano Novo Lunar reune deslocamentos familiares, decoracoes vermelhas, refeicoes especiais e costumes de boa sorte. As datas variam no calendario gregoriano.", "Chinese New Year"],
+  ["Procissao de Nossa Senhora de Sheshan", "Shanghai", "tradicoes", "Procissoes", "Peregrinacao catolica realizada no santuario de Sheshan.", "A celebracao em Sheshan e uma referencia de pratica religiosa catolica em Shanghai. Consulte a programacao oficial e siga as orientacoes do santuario.", "Sheshan Basilica Shanghai"],
+  ["Peregrinacao a Wutai Shan", "Shanxi", "tradicoes", "Romarias", "Destino de peregrinacao budista com templos historicos.", "Wutai Shan e uma das montanhas sagradas do budismo chines. Visitantes encontram templos, praticantes e percursos de valor espiritual e cultural.", "Wutai Shan China"],
+  ["Festival do Barco-Dragao", "Nacional", "tradicoes", "Festivais", "Festival marcado por regatas e zongzi.", "O Festival do Barco-Dragao combina competicoes de barcos, comidas tradicionais e referencias a narrativas historicas. Ocorre no quinto mes lunar.", "Dragon Boat Festival China"],
+  ["Dia Nacional da China", "Nacional", "tradicoes", "Feriados Locais", "Feriado nacional celebrado em 1 de outubro.", "O Dia Nacional marca a fundacao da Republica Popular da China. O periodo pode gerar grande movimento turistico, por isso e importante planejar deslocamentos e reservas.", "National Day China October 1"]
+].map(([title, city, category, type, summary, detail, place]) => ({
+  id: slugify(`${category}-${type}-${title}`),
+  title,
+  city,
+  category,
+  type,
+  summary,
+  detail,
+  tags: [normalize(type), normalize(category), normalize(city)],
+  location: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`
+}));
+
+initialContent.push(...phaseTwoContent);
+
 const storageKeys = {
   content: "dragonLoreContent",
   favorites: "dragonLoreFavorites"
@@ -150,7 +200,17 @@ const elements = {
 
 function loadContent() {
   const saved = localStorage.getItem(storageKeys.content);
-  return saved ? JSON.parse(saved) : initialContent;
+  if (!saved) return initialContent;
+
+  try {
+    const savedContent = JSON.parse(saved);
+    if (!Array.isArray(savedContent)) return initialContent;
+
+    const savedById = new Map(savedContent.map((item) => [item.id, item]));
+    return [...initialContent.map((item) => savedById.get(item.id) || item), ...savedContent.filter((item) => !initialContent.some((starter) => starter.id === item.id))];
+  } catch {
+    return initialContent;
+  }
 }
 
 function saveContent() {
