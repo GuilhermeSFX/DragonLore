@@ -50,6 +50,41 @@ textarea {
 
 .navbar {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Logo à esquerda e menu à direita */
+    padding: 16px 32px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color .3s;
+}
+
+.nav-links a:hover {
+    color: #d4af37;
 }
 
 .navbar::after {
