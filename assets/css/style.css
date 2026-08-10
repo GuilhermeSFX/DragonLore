@@ -190,9 +190,10 @@ textarea {
 
 .hero h1 {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(3.8rem, 8vw, 7.5rem);
   line-height: 0.95;
+  letter-spacing: 0.03em;
 }
 
 .hero p {
