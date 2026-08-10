@@ -407,12 +407,23 @@ a:focus-visible {
   gap: 18px;
 }
 
-.category-card,
 .content-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+}
+
+.category-card {
   display: grid;
   gap: 12px;
   align-content: start;
   padding: 22px;
+}
+
+.content-card .button.small {
+  align-self: flex-start;
+  margin-top: auto;
 }
 
 .category-icon {
