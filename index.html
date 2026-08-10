@@ -1,190 +1,190 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Dragon Lore: guia cultural sobre historia, tradicoes, gastronomia, turismo e servicos ligados a cultura chinesa."
-    />
-    <title>Dragon Lore | Guia Cultural Chines</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <header class="site-header" id="inicio">
-      <nav class="navbar" aria-label="Navegacao principal">
-        <a class="brand" href="#inicio" aria-label="Dragon Lore inicio">
-          <span class="brand-mark" aria-hidden="true">龍</span>
-          <span>Dragon Lore</span>
-        </a>
 
-        <button class="menu-toggle" type="button" aria-controls="main-menu" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Dragon Lore: guia cultural sobre historia, tradicoes, gastronomia, turismo e servicos ligados a cultura chinesa." />
+  <title>Dragon Lore | Guia Cultural Chines</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
 
-        <ul class="nav-links" id="main-menu">
-          <li><a href="#categorias">Categorias</a></li>
-          <li><a href="#conteudos">Conteudos</a></li>
-          <li><a href="#favoritos">Favoritos</a></li>
-          <li><a href="#admin">Admin</a></li>
-        </ul>
-      </nav>
+<body>
+  <header class="site-header" id="inicio">
+    <nav class="navbar" aria-label="Navegacao principal">
+      <a class="brand" href="#inicio" aria-label="Dragon Lore inicio">
+        <span class="brand-mark" aria-hidden="true">龍</span>
+        <span>Dragon Lore</span>
+      </a>
 
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Guia cultural inteligente</p>
-          <h1 id="hero-title">Dragon Lore</h1>
-          <p>
-            Explore historia, costumes, culinaria, turismo, tradicoes e servicos essenciais
-            ligados a cultura chinesa em um portal simples, responsivo e preparado para crescer.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#conteudos">Explorar conteudos</a>
-            <a class="button secondary" href="#admin">Cadastrar item</a>
-          </div>
+      <button class="menu-toggle" type="button" aria-controls="main-menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="main-menu">
+        <li><a href="#categorias">Categorias</a></li>
+        <li><a href="#conteudos">Conteudos</a></li>
+        <li><a href="#favoritos">Favoritos</a></li>
+        <li><a href="#admin">Admin</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Guia cultural inteligente</p>
+        <h1 id="hero-title">Dragon Lore</h1>
+        <p>
+          Explore historia, costumes, culinaria, turismo, tradicoes e servicos essenciais
+          ligados a cultura chinesa em um portal simples, responsivo e preparado para crescer.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#conteudos">Explorar conteudos</a>
+          <a class="button secondary" href="#admin">Cadastrar item</a>
         </div>
+      </div>
 
-        <div class="hero-panel" aria-label="Resumo do MVP">
-          <span class="hero-symbol" aria-hidden="true">中</span>
-          <dl>
-            <div>
-              <dt>Cidade inicial</dt>
-              <dd>Beijing</dd>
-            </div>
-            <div>
-              <dt>Categorias</dt>
-              <dd>6 principais</dd>
-            </div>
-            <div>
-              <dt>Modo</dt>
-              <dd>Sem backend</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
-    </header>
+      <div class="hero-panel" aria-label="Sobre o Dragon Lore">
+        <span class="hero-symbol" aria-hidden="true">中</span>
 
-    <main>
-      <section class="toolbar-section" aria-label="Busca e filtros">
-        <div class="search-card">
-          <label for="global-search">Buscar no Dragon Lore</label>
-          <div class="search-row">
-            <input
-              id="global-search"
-              type="search"
-              placeholder="Digite cidade, prato, tradicao, monumento..."
-              autocomplete="off"
-            />
-            <select id="city-filter" aria-label="Filtrar por cidade">
-              <option value="todas">Todas as cidades</option>
-            </select>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="categorias" aria-labelledby="categories-title">
-        <div class="section-heading">
-          <p class="eyebrow">Navegacao por categorias</p>
-        </div>
-        <div class="category-grid" id="category-grid"></div>
-      </section>
-
-      <section class="section content-layout" id="conteudos" aria-labelledby="content-title">
-        <aside class="filter-panel" aria-label="Filtros de categoria">
-          <h2>Filtros</h2>
-          <div id="category-filters" class="filter-list"></div>
-        </aside>
-
-        <div class="content-results">
-          <div class="section-heading compact">
-            <p class="eyebrow">Conteudos locais</p>
-            <h2 id="content-title">Itens culturais encontrados</h2>
-          </div>
-          <div class="result-meta" id="result-meta" aria-live="polite"></div>
-          <div class="card-grid" id="content-grid"></div>
-          <p class="empty-state" id="empty-state" hidden>Nenhum conteudo encontrado para a busca atual.</p>
-        </div>
-      </section>
-
-      <section class="section detail-section" id="detalhes" aria-labelledby="detail-title">
-        <div class="detail-card" id="detail-card">
-          <p class="eyebrow">Detalhes</p>
-          <h2 id="detail-title">Selecione um conteudo</h2>
-          <p>Escolha um card para visualizar informacoes completas, itens relacionados e acoes uteis.</p>
-        </div>
-      </section>
-
-      <section class="section" id="favoritos" aria-labelledby="favorites-title">
-        <div class="section-heading">
-          <p class="eyebrow">Salvo no navegador</p>
-          <h2 id="favorites-title">Favoritos</h2>
-        </div>
-        <div class="card-grid" id="favorites-grid"></div>
-        <p class="empty-state" id="favorites-empty">Voce ainda nao favoritou nenhum conteudo.</p>
-      </section>
-
-      <section class="section admin-section" id="admin" aria-labelledby="admin-title">
-        <div class="section-heading">
-          <p class="eyebrow">Painel administrativo simulado</p>
-          <h2 id="admin-title">CRUD local para o MVP</h2>
-        </div>
-
-        <form class="admin-form" id="content-form">
-          <input type="hidden" id="content-id" />
-
-          <div class="form-grid">
-            <label>
-              Titulo
-              <input id="content-title-input" type="text" required placeholder="Ex.: Cerimonia do cha" />
-            </label>
-            <label>
-              Cidade
-              <input id="content-city-input" type="text" required placeholder="Ex.: Hangzhou" />
-            </label>
-            <label>
-              Categoria
-              <select id="content-category-input" required></select>
-            </label>
-            <label>
-              Tipo
-              <input id="content-type-input" type="text" required placeholder="Ex.: Gastronomia" />
-            </label>
+        <dl>
+          <div>
+            <dt>Exploração</dt>
+            <dd>Mitologia</dd>
           </div>
 
+          <div>
+            <dt>Criaturas</dt>
+            <dd>Dragões e lendas</dd>
+          </div>
+
+          <div>
+            <dt>Descoberta</dt>
+            <dd>6 categorias</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="toolbar-section" aria-label="Busca e filtros">
+      <div class="search-card">
+        <label for="global-search">Buscar no Dragon Lore</label>
+        <div class="search-row">
+          <input id="global-search" type="search" placeholder="Digite cidade, prato, tradicao, monumento..."
+            autocomplete="off" />
+          <select id="city-filter" aria-label="Filtrar por cidade">
+            <option value="todas">Todas as cidades</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="categorias" aria-labelledby="categories-title">
+      <div class="section-heading">
+        <p class="eyebrow">Navegacao por categorias</p>
+      </div>
+      <div class="category-grid" id="category-grid"></div>
+    </section>
+
+    <section class="section content-layout" id="conteudos" aria-labelledby="content-title">
+      <aside class="filter-panel" aria-label="Filtros de categoria">
+        <h2>Filtros</h2>
+        <div id="category-filters" class="filter-list"></div>
+      </aside>
+
+      <div class="content-results">
+        <div class="section-heading compact">
+          <p class="eyebrow">Conteudos locais</p>
+          <h2 id="content-title">Itens culturais encontrados</h2>
+        </div>
+        <div class="result-meta" id="result-meta" aria-live="polite"></div>
+        <div class="card-grid" id="content-grid"></div>
+        <p class="empty-state" id="empty-state" hidden>Nenhum conteudo encontrado para a busca atual.</p>
+      </div>
+    </section>
+
+    <section class="section detail-section" id="detalhes" aria-labelledby="detail-title">
+      <div class="detail-card" id="detail-card">
+        <p class="eyebrow">Detalhes</p>
+        <h2 id="detail-title">Selecione um conteudo</h2>
+        <p>Escolha um card para visualizar informacoes completas, itens relacionados e acoes uteis.</p>
+      </div>
+    </section>
+
+    <section class="section" id="favoritos" aria-labelledby="favorites-title">
+      <div class="section-heading">
+        <p class="eyebrow">Salvo no navegador</p>
+        <h2 id="favorites-title">Favoritos</h2>
+      </div>
+      <div class="card-grid" id="favorites-grid"></div>
+      <p class="empty-state" id="favorites-empty">Voce ainda nao favoritou nenhum conteudo.</p>
+    </section>
+
+    <section class="section admin-section" id="admin" aria-labelledby="admin-title">
+      <div class="section-heading">
+        <p class="eyebrow">Painel administrativo simulado</p>
+        <h2 id="admin-title">CRUD local para o MVP</h2>
+      </div>
+
+      <form class="admin-form" id="content-form">
+        <input type="hidden" id="content-id" />
+
+        <div class="form-grid">
           <label>
-            Resumo
-            <textarea id="content-summary-input" required rows="3" placeholder="Resumo curto do conteudo"></textarea>
+            Titulo
+            <input id="content-title-input" type="text" required placeholder="Ex.: Cerimonia do cha" />
           </label>
-
           <label>
-            Detalhes
-            <textarea id="content-detail-input" required rows="5" placeholder="Descricao detalhada"></textarea>
+            Cidade
+            <input id="content-city-input" type="text" required placeholder="Ex.: Hangzhou" />
           </label>
-
           <label>
-            Palavras-chave
-            <input id="content-tags-input" type="text" placeholder="cha, tradicao, turismo" />
+            Categoria
+            <select id="content-category-input" required></select>
           </label>
+          <label>
+            Tipo
+            <input id="content-type-input" type="text" required placeholder="Ex.: Gastronomia" />
+          </label>
+        </div>
 
-          <div class="form-actions">
-            <button class="button primary" type="submit">Salvar conteudo</button>
-            <button class="button ghost" type="button" id="reset-form">Limpar</button>
-          </div>
-        </form>
+        <label>
+          Resumo
+          <textarea id="content-summary-input" required rows="3" placeholder="Resumo curto do conteudo"></textarea>
+        </label>
 
-        <div class="admin-list" id="admin-list" aria-live="polite"></div>
-      </section>
-    </main>
+        <label>
+          Detalhes
+          <textarea id="content-detail-input" required rows="5" placeholder="Descricao detalhada"></textarea>
+        </label>
 
-    <footer class="site-footer">
-      <p>Dragon Lore MVP - HTML5, CSS3 e JavaScript com dados locais.</p>
-    </footer>
+        <label>
+          Palavras-chave
+          <input id="content-tags-input" type="text" placeholder="cha, tradicao, turismo" />
+        </label>
 
-    <script src="main.js"></script>
-  </body>
+        <div class="form-actions">
+          <button class="button primary" type="submit">Salvar conteudo</button>
+          <button class="button ghost" type="button" id="reset-form">Limpar</button>
+        </div>
+      </form>
+
+      <div class="admin-list" id="admin-list" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Dragon Lore MVP - HTML5, CSS3 e JavaScript com dados locais.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
 </html>
