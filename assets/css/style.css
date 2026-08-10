@@ -182,8 +182,8 @@ textarea {
 .eyebrow {
   margin: 0 0 10px;
   color: var(--gold);
-  font-size: 0.82rem;
-  font-weight: 800;
+  font-size: 1.0rem;
+  font-weight: 850;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
