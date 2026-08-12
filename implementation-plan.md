@@ -1,9 +1,5 @@
 # Plano de Implementação — Dragon Lore
 
-## Estado atual
-
-O projeto está na **Fase 3**. A aplicação é um frontend em HTML5, CSS3 e JavaScript puro, com dados culturais locais e sem backend, autenticação ou interfaces administrativas.
-
 ## Fase 0 — Preparação do projeto — concluída
 
 - Estrutura base do frontend.
@@ -53,6 +49,3 @@ O projeto está na **Fase 3**. A aplicação é um frontend em HTML5, CSS3 e Jav
 - Priorizar expansões de conteúdo e múltiplas regiões.
 - Avaliar integrações e arquitetura somente quando houver escopo aprovado.
 
-## Fora do plano atual
-
-Não há implementação planejada nesta etapa para backend, autenticação, usuários, permissões ou criação manual de conteúdos.
