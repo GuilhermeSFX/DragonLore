@@ -359,7 +359,7 @@ function renderContent() {
   if (!elements.contentGrid) return;
 
   const filtered = getFilteredContent();
-  elements.resultMeta.textContent = `${filtered.length} conteudo(s) encontrado(s)`;
+  elements.resultMeta.textContent = "";
   elements.emptyState.hidden = filtered.length > 0;
   elements.contentGrid.innerHTML = filtered.map(renderCard).join("");
 }
