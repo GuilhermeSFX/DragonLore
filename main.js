@@ -163,11 +163,10 @@ const phaseTwoContent = [
 initialContent.push(...phaseTwoContent);
 
 const storageKeys = {
-  content: "dragonLoreContent",
   favorites: "dragonLoreFavorites"
 };
 
-let contentItems = loadContent();
+let contentItems = initialContent;
 let favorites = loadFavorites();
 let activeCategory = "todas";
 let selectedItemId = null;
@@ -185,37 +184,7 @@ const elements = {
   search: document.querySelector("#global-search"),
   cityFilter: document.querySelector("#city-filter"),
   detailCard: document.querySelector("#detail-card"),
-  form: document.querySelector("#content-form"),
-  resetForm: document.querySelector("#reset-form"),
-  adminList: document.querySelector("#admin-list"),
-  contentId: document.querySelector("#content-id"),
-  titleInput: document.querySelector("#content-title-input"),
-  cityInput: document.querySelector("#content-city-input"),
-  categoryInput: document.querySelector("#content-category-input"),
-  typeInput: document.querySelector("#content-type-input"),
-  summaryInput: document.querySelector("#content-summary-input"),
-  detailInput: document.querySelector("#content-detail-input"),
-  tagsInput: document.querySelector("#content-tags-input")
 };
-
-function loadContent() {
-  const saved = localStorage.getItem(storageKeys.content);
-  if (!saved) return initialContent;
-
-  try {
-    const savedContent = JSON.parse(saved);
-    if (!Array.isArray(savedContent)) return initialContent;
-
-    const savedById = new Map(savedContent.map((item) => [item.id, item]));
-    return [...initialContent.map((item) => savedById.get(item.id) || item), ...savedContent.filter((item) => !initialContent.some((starter) => starter.id === item.id))];
-  } catch {
-    return initialContent;
-  }
-}
-
-function saveContent() {
-  localStorage.setItem(storageKeys.content, JSON.stringify(contentItems));
-}
 
 function loadFavorites() {
   const saved = localStorage.getItem(storageKeys.favorites);
@@ -232,6 +201,10 @@ function getCategory(id) {
 
 function normalize(value) {
   return value.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function slugify(value) {
+  return normalize(value).replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 function getFilteredContent() {
@@ -281,9 +254,6 @@ function renderCategories() {
     )
     .join("");
 
-  elements.categoryInput.innerHTML = categories
-    .map((category) => `<option value="${category.id}">${category.name}</option>`)
-    .join("");
 }
 
 function renderCities() {
@@ -382,31 +352,11 @@ function renderDetail(itemId) {
   document.querySelector("#detalhes").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function renderAdminList() {
-  elements.adminList.innerHTML = contentItems
-    .map(
-      (item) => `
-        <article class="admin-item">
-          <div>
-            <strong>${item.title}</strong>
-            <span>${item.city} - ${getCategory(item.category)?.name || "Categoria"}</span>
-          </div>
-          <div class="admin-actions">
-            <button class="button small" type="button" data-edit="${item.id}">Editar</button>
-            <button class="button small danger" type="button" data-delete="${item.id}">Excluir</button>
-          </div>
-        </article>
-      `
-    )
-    .join("");
-}
-
 function renderAll() {
   renderCategories();
   renderCities();
   renderContent();
   renderFavorites();
-  renderAdminList();
   if (selectedItemId) {
     renderDetail(selectedItemId);
   }
@@ -440,60 +390,6 @@ async function shareItem(itemId) {
   alert("Link copiado para a area de transferencia.");
 }
 
-function fillForm(item) {
-  elements.contentId.value = item.id;
-  elements.titleInput.value = item.title;
-  elements.cityInput.value = item.city;
-  elements.categoryInput.value = item.category;
-  elements.typeInput.value = item.type;
-  elements.summaryInput.value = item.summary;
-  elements.detailInput.value = item.detail;
-  elements.tagsInput.value = item.tags.join(", ");
-  elements.titleInput.focus();
-}
-
-function resetForm() {
-  elements.form.reset();
-  elements.contentId.value = "";
-}
-
-function slugify(value) {
-  return normalize(value).replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
-
-function handleFormSubmit(event) {
-  event.preventDefault();
-
-  const title = elements.titleInput.value.trim();
-  const id = elements.contentId.value || `${slugify(title)}-${Date.now()}`;
-  const item = {
-    id,
-    title,
-    city: elements.cityInput.value.trim(),
-    category: elements.categoryInput.value,
-    type: elements.typeInput.value.trim(),
-    summary: elements.summaryInput.value.trim(),
-    detail: elements.detailInput.value.trim(),
-    tags: elements.tagsInput.value
-      .split(",")
-      .map((tag) => tag.trim())
-      .filter(Boolean),
-    location: ""
-  };
-
-  const existingIndex = contentItems.findIndex((content) => content.id === id);
-
-  if (existingIndex >= 0) {
-    contentItems[existingIndex] = item;
-  } else {
-    contentItems = [item, ...contentItems];
-  }
-
-  saveContent();
-  resetForm();
-  renderAll();
-}
-
 function bindEvents() {
   elements.menuToggle.addEventListener("click", () => {
     const isOpen = elements.navLinks.classList.toggle("open");
@@ -502,8 +398,6 @@ function bindEvents() {
 
   elements.search.addEventListener("input", renderContent);
   elements.cityFilter.addEventListener("change", renderContent);
-  elements.form.addEventListener("submit", handleFormSubmit);
-  elements.resetForm.addEventListener("click", resetForm);
 
   document.addEventListener("click", (event) => {
     const categoryButton = event.target.closest("[data-category]");
@@ -511,8 +405,6 @@ function bindEvents() {
     const favoriteButton = event.target.closest("[data-favorite]");
     const detailButton = event.target.closest("[data-detail]");
     const shareButton = event.target.closest("[data-share]");
-    const editButton = event.target.closest("[data-edit]");
-    const deleteButton = event.target.closest("[data-delete]");
 
     if (categoryButton) {
       activeCategory = categoryButton.dataset.category;
@@ -537,20 +429,6 @@ function bindEvents() {
       shareItem(shareButton.dataset.share);
     }
 
-    if (editButton) {
-      const item = contentItems.find((content) => content.id === editButton.dataset.edit);
-      if (item) fillForm(item);
-    }
-
-    if (deleteButton) {
-      const itemId = deleteButton.dataset.delete;
-      contentItems = contentItems.filter((content) => content.id !== itemId);
-      favorites = favorites.filter((favoriteId) => favoriteId !== itemId);
-      saveContent();
-      saveFavorites();
-      if (selectedItemId === itemId) renderDetail(null);
-      renderAll();
-    }
   });
 }
 

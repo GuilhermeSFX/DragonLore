@@ -1,179 +1,55 @@
-# PRD.md — Dragon Lore
+# PRD — Dragon Lore
 
-## 1. Visão Geral
+## Visão geral
 
-### Nome do Produto
-**Dragon Lore**
+Dragon Lore é um guia cultural web sobre história, cultura, gastronomia, turismo, serviços úteis e tradições chinesas. A aplicação organiza conteúdos locais para turistas, estudantes, professores, moradores e pesquisadores.
 
-### Descrição
+## Objetivo
 
-Dragon Lore é uma plataforma de guia cultural inteligente que reúne informações sobre história, cultura, gastronomia, turismo, serviços essenciais e tradições de uma determinada região ou cidade. O objetivo é oferecer uma experiência completa para moradores, turistas e pesquisadores interessados em conhecer melhor a identidade cultural local.
+Permitir a descoberta de informações culturais de forma rápida, organizada e responsiva, com navegação por categorias e busca na base local de conteúdos.
 
-O sistema deve ser escalável para suportar múltiplas cidades, estados e países futuramente.
+## Escopo atual
 
-## 2. Objetivo do Produto
-
-Permitir que qualquer usuário encontre informações culturais relevantes de maneira rápida, organizada e intuitiva.
-
-O sistema deve servir como:
-- Guia turístico
-- Guia cultural
-- Guia histórico
-- Catálogo gastronômico
-- Central de serviços úteis
-- Plataforma de preservação da cultura local
-
-## 3. Público-Alvo
-
-### Primário
-- Turistas
-- Viajantes
-- Estudantes
-- Professores
-- Moradores
-
-### Secundário
-- Secretarias de Turismo
-- Guias turísticos
-- Museus
-- Instituições culturais
-- Restaurantes
-- Organizadores de eventos
-
-## 4. Personas
-
-### Maria
-- 28 anos
-- Turista
-- Quer descobrir pontos turísticos e restaurantes típicos.
-
-### Carlos
-- 45 anos
-- Professor de História
-- Procura curiosidades históricas para utilizar em sala de aula.
-
-### João
-- 21 anos
-- Estudante
-- Busca informações culturais para pesquisas.
-
-## 5. Problema
-
-Hoje as informações culturais costumam estar espalhadas entre diversos sites, blogs e redes sociais, dificultando o acesso a conteúdo confiável e organizado.
-
-## 6. Objetivos de Negócio
-
-- Centralizar informações culturais.
-- Incentivar o turismo.
-- Valorizar a história regional.
-- Divulgar gastronomia típica.
-- Facilitar o acesso a serviços locais.
-- Tornar-se referência em conteúdo cultural.
-
-## 7. Escopo
-
-- Guia Cultural
+- Guia Cultural Local
 - Serviços Úteis
 - Curiosidades Históricas
 - Culinária Tradicional
 - Pontos Turísticos
 - Tradições Religiosas e Comemorativas
 
-## 8. Funcionalidades
+## Funcionalidades atuais
 
-### Guia Cultural Local
-- História resumida
-- Costumes
-- Música
-- Danças
-- Artesanato
-- Literatura
-- Idiomas
-- Vestimentas típicas
+- Navegação por categorias.
+- Busca global por palavra-chave.
+- Filtro por cidade e categoria.
+- Cards e visualização detalhada de conteúdos.
+- Conteúdos relacionados por categoria.
+- Favoritos persistidos no navegador.
+- Compartilhamento de conteúdos.
+- Links de localização quando disponíveis.
 
-### Serviços Úteis
-- Hospitais
-- Farmácias
-- Delegacias
-- Bombeiros
-- Bancos
-- Correios
-- Transporte público
-- Aeroportos
-- Rodoviárias
+## Requisitos funcionais
 
-### Curiosidades Históricas
-- Linha do tempo
-- Personagens históricos
-- Monumentos
-- Eventos marcantes
+- O usuário deve conseguir navegar pelas categorias disponíveis.
+- O usuário deve conseguir buscar por título, cidade, tipo, resumo, detalhes e palavras-chave.
+- O usuário deve conseguir filtrar o resultado por cidade e categoria.
+- O usuário deve conseguir abrir o detalhe de um conteúdo e itens relacionados.
+- O usuário deve conseguir adicionar e remover favoritos.
+- O usuário deve conseguir compartilhar um conteúdo quando o navegador oferecer suporte.
 
-### Culinária Tradicional
-- Pratos típicos
-- Ingredientes
-- História
-- Restaurantes recomendados
-- Bebidas
-- Doces
+## Requisitos não funcionais
 
-### Pontos Turísticos
-- Museus
-- Igrejas
-- Praças
-- Parques
-- Trilhas
-- Mirantes
-- Cachoeiras
+- Interface responsiva para desktop, tablet e celular.
+- Tecnologias: HTML5, CSS3 e JavaScript puro.
+- Dados culturais mantidos localmente nesta etapa.
+- Principais interações devem responder em até dois segundos para a base local.
 
-### Tradições Religiosas e Comemorativas
-- Festas populares
-- Procissões
-- Romarias
-- Festivais
-- Feriados locais
+## Fora do escopo atual
 
-## 9. Requisitos Funcionais
+- Backend, API e banco de dados.
+- Autenticação, usuários e permissões.
+- Interfaces administrativas e criação manual de conteúdos.
 
-- Busca por cidade
-- Navegação por categorias
-- Busca global
-- Favoritos
-- Compartilhamento
-- CRUD administrativo
-- Galeria de imagens
-- Mapas
-- Conteúdos relacionados
+## Evolução futura
 
-## 10. Requisitos Não Funcionais
-
-- Tempo de resposta < 2 segundos
-- HTTPS
-- JWT
-- Responsivo
-- Escalável
-- Disponibilidade de 99,9%
-
-## 11. Roadmap
-
-### MVP
-- Cadastro de cidades
-- Todas as categorias principais
-- Busca
-- Painel administrativo
-
-### Futuro
-- IA para recomendações
-- Aplicativo mobile
-- Modo offline
-- Gamificação
-- Multilíngue
-
-## 12. Stack Recomendada
-
-### Frontend
-- HTML5
-- CSS3
-- JavaScript
-
-### Backend
-- Não necessário na primeira fase
+O projeto poderá evoluir para múltiplas regiões, fontes de dados externas, galeria de imagens, acessibilidade ampliada e outros recursos priorizados em etapas futuras.

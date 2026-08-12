@@ -31,7 +31,6 @@
         <li><a href="#categorias">Categorias</a></li>
         <li><a href="#conteudos">Conteudos</a></li>
         <li><a href="#favoritos">Favoritos</a></li>
-        <li><a href="#admin">Admin</a></li>
       </ul>
     </nav>
 
@@ -45,7 +44,6 @@
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#conteudos">Explorar conteudos</a>
-          <a class="button secondary" href="#admin">Cadastrar item</a>
         </div>
       </div>
 
@@ -127,57 +125,6 @@
       <p class="empty-state" id="favorites-empty">Voce ainda nao favoritou nenhum conteudo.</p>
     </section>
 
-    <section class="section admin-section" id="admin" aria-labelledby="admin-title">
-      <div class="section-heading">
-        <p class="eyebrow">Painel administrativo simulado</p>
-        <h2 id="admin-title">Adicione um novo conteudo</h2>
-      </div>
-
-      <form class="admin-form" id="content-form">
-        <input type="hidden" id="content-id" />
-
-        <div class="form-grid">
-          <label>
-            Titulo
-            <input id="content-title-input" type="text" required placeholder="Ex.: Cerimonia do cha" />
-          </label>
-          <label>
-            Cidade
-            <input id="content-city-input" type="text" required placeholder="Ex.: Hangzhou" />
-          </label>
-          <label>
-            Categoria
-            <select id="content-category-input" required></select>
-          </label>
-          <label>
-            Tipo
-            <input id="content-type-input" type="text" required placeholder="Ex.: Gastronomia" />
-          </label>
-        </div>
-
-        <label>
-          Resumo
-          <textarea id="content-summary-input" required rows="3" placeholder="Resumo curto do conteudo"></textarea>
-        </label>
-
-        <label>
-          Detalhes
-          <textarea id="content-detail-input" required rows="5" placeholder="Descricao detalhada"></textarea>
-        </label>
-
-        <label>
-          Palavras-chave
-          <input id="content-tags-input" type="text" placeholder="cha, tradicao, turismo" />
-        </label>
-
-        <div class="form-actions">
-          <button class="button primary" type="submit">Salvar conteudo</button>
-          <button class="button ghost" type="button" id="reset-form">Limpar</button>
-        </div>
-      </form>
-
-      <div class="admin-list" id="admin-list" aria-live="polite"></div>
-    </section>
   </main>
 
   <footer class="site-footer">
