@@ -373,6 +373,9 @@ function renderCard(item) {
 
   return `
     <article class="content-card">
+      <div class="card-image">
+        <img src="${getContentImage(item)}" alt="Imagem de ${item.title}" />
+      </div>
       <div class="card-topline">
         <span>${category?.name || "Categoria"}</span>
         <div class="card-actions">
