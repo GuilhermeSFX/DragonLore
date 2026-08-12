@@ -460,6 +460,33 @@ function renderDetail(itemId) {
   }
 }
 
+function setActiveCategory(categoryId, { shouldNavigate = false } = {}) {
+  const nextCategory = categories.some((category) => category.id === categoryId) ? categoryId : "todas";
+  activeCategory = nextCategory;
+
+  if (window.location.pathname.endsWith("conteudos.html")) {
+    const nextUrl = new URL(window.location.href);
+    if (nextCategory === "todas") {
+      nextUrl.searchParams.delete("categoria");
+    } else {
+      nextUrl.searchParams.set("categoria", nextCategory);
+    }
+    window.history.replaceState({}, "", `${nextUrl.pathname}${nextUrl.search}`);
+    renderAll();
+    return;
+  }
+
+  if (shouldNavigate) {
+    const target = nextCategory === "todas"
+      ? "conteudos.html"
+      : `conteudos.html?categoria=${encodeURIComponent(nextCategory)}`;
+    window.location.href = target;
+    return;
+  }
+
+  renderAll();
+}
+
 function renderAll() {
   renderExplorerStatus();
   renderCategories();
@@ -542,8 +569,10 @@ function bindEvents() {
     const mapButton = event.target.closest("[data-map]");
 
     if (categoryButton) {
-      activeCategory = categoryButton.dataset.category;
-      renderAll();
+      const isHomeCategoryButton = categoryButton.closest("#category-grid");
+      setActiveCategory(categoryButton.dataset.category, {
+        shouldNavigate: Boolean(isHomeCategoryButton)
+      });
     }
 
     if (favoriteButton) {
