@@ -458,16 +458,8 @@ a:focus-visible {
 .content-card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 0;
-  overflow: hidden;
-}
-
-.content-card .card-image img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  gap: 16px;
+  padding: 22px;
 }
 
 .content-card .card-topline,
@@ -475,7 +467,7 @@ a:focus-visible {
 .content-card p,
 .content-card .card-meta,
 .content-card .button {
-  padding: 18px 22px;
+  padding: 0;
 }
 
 .content-card .card-topline {
