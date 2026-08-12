@@ -459,7 +459,22 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.content-card .card-image img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.content-card .card-body {
   padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .content-card .card-topline,
@@ -486,10 +501,7 @@ a:focus-visible {
 .content-card .button.small {
   align-self: flex-start;
   margin-top: auto;
-}
-
-.category-icon {
-  display: grid;
+  padding: 11px 18px;
   width: 52px;
   height: 52px;
   place-items: center;

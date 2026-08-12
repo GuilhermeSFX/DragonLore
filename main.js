@@ -37,6 +37,45 @@ const categories = [
   }
 ];
 
+const itemImages = {
+  "Beijing e a memoria imperial": "https://source.unsplash.com/featured/900x506/?Forbidden%20City,Beijing",
+  "Exercito de Terracota": "https://source.unsplash.com/featured/900x506/?Terracotta%20Army,Xian",
+  "Cha Longjing": "https://source.unsplash.com/featured/900x506/?Longjing%20tea,Hangzhou",
+  "Metro de Shanghai": "https://source.unsplash.com/featured/900x506/?Shanghai%20metro",
+  "Templo do Ceu": "https://source.unsplash.com/featured/900x506/?Temple%20of%20Heaven,Beijing",
+  "Festival das Lanternas": "https://source.unsplash.com/featured/900x506/?Lantern%20Festival,China",
+  "Hospital Peking Union Medical College": "https://source.unsplash.com/featured/900x506/?Chinese%20hospital",
+  "Farmacia Tong Ren Tang": "https://source.unsplash.com/featured/900x506/?Chinese%20pharmacy",
+  "Delegacia de Policia de Dongcheng": "https://source.unsplash.com/featured/900x506/?Chinese%20police%20station",
+  "Corpo de Bombeiros de Shanghai": "https://source.unsplash.com/featured/900x506/?fire%20station%20China",
+  "Banco da China - Wangfujing": "https://source.unsplash.com/featured/900x506/?Bank%20of%20China,Beijing",
+  "Correio de Beijing": "https://source.unsplash.com/featured/900x506/?post%20office%20Beijing",
+  "Aeroporto Internacional de Beijing Capital": "https://source.unsplash.com/featured/900x506/?Beijing%20airport",
+  "Rodoviaria de Shanghai": "https://source.unsplash.com/featured/900x506/?Shanghai%20bus%20station",
+  "Linha do tempo das dinastias chinesas": "https://source.unsplash.com/featured/900x506/?Chinese%20history%20timeline",
+  "Qin Shi Huang": "https://source.unsplash.com/featured/900x506/?Qin%20Shi%20Huang",
+  "Grande Muralha da China": "https://source.unsplash.com/featured/900x506/?Great%20Wall%20of%20China",
+  "Fundacao da Republica Popular da China": "https://source.unsplash.com/featured/900x506/?Tiananmen%20Square",
+  "Jiaozi": "https://source.unsplash.com/featured/900x506/?jiaozi",
+  "Pimenta-de-Sichuan": "https://source.unsplash.com/featured/900x506/?Sichuan%20pepper",
+  "Historia do Pato Laqueado de Beijing": "https://source.unsplash.com/featured/900x506/?Peking%20duck",
+  "Quanjude": "https://source.unsplash.com/featured/900x506/?Chinese%20restaurant",
+  "Baijiu": "https://source.unsplash.com/featured/900x506/?Baijiu",
+  "Mooncake": "https://source.unsplash.com/featured/900x506/?mooncake",
+  "Museu Nacional da China": "https://source.unsplash.com/featured/900x506/?National%20Museum%20of%20China",
+  "Catedral de Xujiahui": "https://source.unsplash.com/featured/900x506/?Xujiahui%20Cathedral",
+  "Praca Tiananmen": "https://source.unsplash.com/featured/900x506/?Tiananmen%20Square",
+  "Parque Beihai": "https://source.unsplash.com/featured/900x506/?Beihai%20Park",
+  "Trilha do Monte Huangshan": "https://source.unsplash.com/featured/900x506/?Huangshan%20mountains",
+  "Mirante da Torre de Shanghai": "https://source.unsplash.com/featured/900x506/?Shanghai%20Tower",
+  "Cachoeira Huangguoshu": "https://source.unsplash.com/featured/900x506/?Huangguoshu%20waterfall",
+  "Ano Novo Lunar": "https://source.unsplash.com/featured/900x506/?Chinese%20New%20Year",
+  "Procissao de Nossa Senhora de Sheshan": "https://source.unsplash.com/featured/900x506/?Sheshan%20procession",
+  "Peregrinacao a Wutai Shan": "https://source.unsplash.com/featured/900x506/?Wutai%20Shan",
+  "Festival do Barco-Dragao": "https://source.unsplash.com/featured/900x506/?Dragon%20Boat%20Festival",
+  "Dia Nacional da China": "https://source.unsplash.com/featured/900x506/?National%20Day%20China"
+};
+
 const initialContent = [
   {
     id: "beijing-historia-imperial",
@@ -48,7 +87,8 @@ const initialContent = [
     detail:
       "Beijing concentra camadas importantes da historia chinesa, com referencias a periodos imperiais, planejamento urbano simbolico e areas tradicionais como os hutongs. Para o MVP, este conteudo serve como ponto de entrada para estudantes, turistas e pesquisadores.",
     tags: ["historia", "imperio", "hutongs", "cidade proibida"],
-    location: "https://www.google.com/maps/search/?api=1&query=Beijing+China"
+    location: "https://www.google.com/maps/search/?api=1&query=Beijing+China",
+    image: itemImages["Beijing e a memoria imperial"]
   },
   {
     id: "xian-exercito-terracota",
@@ -60,7 +100,8 @@ const initialContent = [
     detail:
       "O Exercito de Terracota e um dos simbolos arqueologicos mais conhecidos da China. Suas figuras ajudam a contar a centralizacao politica do periodo Qin e o valor das praticas funerarias na antiguidade chinesa.",
     tags: ["arqueologia", "qin", "monumento", "historia"],
-    location: "https://www.google.com/maps/search/?api=1&query=Terracotta+Army+Xi'an"
+    location: "https://www.google.com/maps/search/?api=1&query=Terracotta+Army+Xi'an",
+    image: itemImages["Exercito de Terracota"]
   },
   {
     id: "hangzhou-cha-longjing",
@@ -72,7 +113,8 @@ const initialContent = [
     detail:
       "O Longjing, conhecido como cha Poco do Dragao, representa a relacao entre paisagem, agricultura e refinamento cotidiano. Ele pode aparecer no site com historia, ingredientes, modo de preparo e locais recomendados.",
     tags: ["cha", "longjing", "gastronomia", "bebida"],
-    location: "https://www.google.com/maps/search/?api=1&query=Longjing+Tea+Hangzhou"
+    location: "https://www.google.com/maps/search/?api=1&query=Longjing+Tea+Hangzhou",
+    image: itemImages["Cha Longjing"]
   },
   {
     id: "shanghai-transporte",
@@ -84,7 +126,8 @@ const initialContent = [
     detail:
       "Para servicos uteis, o MVP apresenta itens como transporte publico, hospitais e seguranca. O metro de Shanghai e um exemplo de conteudo com finalidade pratica para turistas e moradores.",
     tags: ["transporte", "metro", "servico", "mobilidade"],
-    location: "https://www.google.com/maps/search/?api=1&query=Shanghai+Metro"
+    location: "https://www.google.com/maps/search/?api=1&query=Shanghai+Metro",
+    image: itemImages["Metro de Shanghai"]
   },
   {
     id: "beijing-templo-ceu",
@@ -96,7 +139,8 @@ const initialContent = [
     detail:
       "O Templo do Ceu ajuda o visitante a compreender a relacao entre politica, cosmologia e arquitetura na China imperial. No Dragon Lore, o item pode reunir contexto historico, imagens futuras e localizacao.",
     tags: ["templo", "turismo", "arquitetura", "beijing"],
-    location: "https://www.google.com/maps/search/?api=1&query=Temple+of+Heaven+Beijing"
+    location: "https://www.google.com/maps/search/?api=1&query=Temple+of+Heaven+Beijing",
+    image: itemImages["Templo do Ceu"]
   },
   {
     id: "festival-lanternas",
@@ -108,7 +152,8 @@ const initialContent = [
     detail:
       "O Festival das Lanternas combina celebracoes familiares, lanternas decoradas, charadas e comidas tradicionais. E uma boa porta de entrada para apresentar festivais, feriados e praticas comemorativas.",
     tags: ["festival", "lanternas", "ano novo lunar", "tradicao"],
-    location: ""
+    location: "",
+    image: itemImages["Festival das Lanternas"]
   }
 ];
 
@@ -157,7 +202,8 @@ const phaseTwoContent = [
   summary,
   detail,
   tags: [normalize(type), normalize(category), normalize(city)],
-  location: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`
+  location: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`,
+  image: itemImages[title] || ""
 }));
 
 initialContent.push(...phaseTwoContent);
@@ -291,6 +337,10 @@ function getFilteredContent() {
   });
 }
 
+function getContentImage(item) {
+  return item.image || "";
+}
+
 function renderCategories() {
   if (elements.categoryGrid) {
     elements.categoryGrid.innerHTML = categories
@@ -360,24 +410,29 @@ function renderCard(item) {
 
   return `
     <article class="content-card">
-      <div class="card-topline">
-        <span>${category?.name || "Categoria"}</span>
-        <div class="card-actions">
-          <button class="icon-button ${isFavorite ? "active" : ""}" type="button" data-favorite="${item.id}" aria-label="Favoritar ${item.title}">
-            ${isFavorite ? "★" : "☆"}
-          </button>
-          <button class="icon-button share" type="button" data-share="${item.id}" aria-label="Compartilhar ${item.title}">
-            ⤴
-          </button>
+      <div class="card-image">
+        <img src="${getContentImage(item)}" alt="${item.title}" />
+      </div>
+      <div class="card-body">
+        <div class="card-topline">
+          <span>${category?.name || "Categoria"}</span>
+          <div class="card-actions">
+            <button class="icon-button ${isFavorite ? "active" : ""}" type="button" data-favorite="${item.id}" aria-label="Favoritar ${item.title}">
+              ${isFavorite ? "★" : "☆"}
+            </button>
+            <button class="icon-button share" type="button" data-share="${item.id}" aria-label="Compartilhar ${item.title}">
+              ⤴
+            </button>
+          </div>
         </div>
+        <h3>${item.title}</h3>
+        <p>${item.summary}</p>
+        <div class="card-meta">
+          <span>${item.city}</span>
+          <span>${item.type}</span>
+        </div>
+        <button class="button small" type="button" data-detail="${item.id}">Ver detalhes</button>
       </div>
-      <h3>${item.title}</h3>
-      <p>${item.summary}</p>
-      <div class="card-meta">
-        <span>${item.city}</span>
-        <span>${item.type}</span>
-      </div>
-      <button class="button small" type="button" data-detail="${item.id}">Ver detalhes</button>
     </article>
   `;
 }
