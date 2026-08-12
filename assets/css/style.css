@@ -205,6 +205,15 @@ textarea {
   letter-spacing: 0.03em;
 }
 
+.hero h1 .hero-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.6rem;
+  color: var(--gold);
+  font-size: 1.1em;
+}
+
 .hero p {
   max-width: 680px;
   color: rgba(255, 255, 255, 0.88);
