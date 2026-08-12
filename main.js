@@ -230,19 +230,6 @@ function getCategory(id) {
   return categories.find((category) => category.id === id);
 }
 
-const defaultCategoryImages = {
-  "guia-cultural": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
-  "servicos": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80",
-  "curiosidades": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
-  "culinaria": "https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1200&q=80",
-  "turismo": "https://images.unsplash.com/photo-1504851149312-4006c90434a1?auto=format&fit=crop&w=1200&q=80",
-  "tradicoes": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1200&q=80"
-};
-
-function getContentImage(item) {
-  return item.image || defaultCategoryImages[item.category] || defaultCategoryImages["guia-cultural"];
-}
-
 function normalize(value) {
   return value.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
@@ -424,9 +411,6 @@ function renderDetail(itemId) {
 
   elements.detailCard.innerHTML = `
     <button class="modal-close" id="close-detail" type="button" aria-label="Fechar detalhes">Fechar</button>
-    <div class="detail-hero">
-      <img src="${getContentImage(item)}" alt="Imagem de ${item.title}" />
-    </div>
     <p class="eyebrow">${category?.name || "Categoria"} - ${item.city}</p>
     <h2 id="detail-title">${item.title}</h2>
     <p>${item.detail}</p>

@@ -632,14 +632,6 @@ a:focus-visible {
     background: rgba(217, 164, 65, 0.14);
   }
 
-  .detail-hero img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius);
-    object-fit: cover;
-    aspect-ratio: 16 / 9;
-  }
-
   .detail-meta {
     display: grid;
     gap: 10px;
