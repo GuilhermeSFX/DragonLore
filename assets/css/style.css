@@ -462,6 +462,7 @@ a:focus-visible {
   gap: 16px;
   padding: 0;
   overflow: hidden;
+  height: 100%;
 }
 
 .content-card .card-image img {
@@ -476,6 +477,8 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  flex: 1;
+  justify-content: space-between;
 }
 
 .content-card .card-topline,
@@ -500,11 +503,9 @@ a:focus-visible {
 }
 
 .content-card .detail-button {
-  align-self: flex-start;
-  margin-top: auto;
-  padding: 10px 18px;
+  margin-top: 12px;
+  padding: 12px 18px;
   min-height: 42px;
-  min-width: 140px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -513,8 +514,8 @@ a:focus-visible {
   color: var(--white);
   white-space: nowrap;
   font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .category-card h3,
@@ -540,14 +541,22 @@ a:focus-visible {
 .text-button {
   justify-self: start;
   border: 0;
-  background: transparent;
+  background: rgba(2, 206, 214, 0.14);
   color: var(--jade);
   cursor: pointer;
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 400;
   letter-spacing: 0.04em;
-  padding: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.text-button:hover,
+.text-button:focus-visible {
+  background-color: rgba(2, 206, 214, 0.24);
+  color: #03474f;
 }
 
 .content-layout {
@@ -629,6 +638,19 @@ a:focus-visible {
     display: flex;
     gap: 8px;
     align-items: center;
+  }
+
+  .category-icon {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--red);
+    color: #d9a441;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
   }
 
   .icon-button {
