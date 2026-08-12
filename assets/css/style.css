@@ -465,8 +465,7 @@ a:focus-visible {
 .content-card .card-topline,
 .content-card h3,
 .content-card p,
-.content-card .card-meta,
-.content-card .button {
+.content-card .card-meta {
   padding: 0;
 }
 
