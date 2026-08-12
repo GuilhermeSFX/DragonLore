@@ -230,6 +230,19 @@ function getCategory(id) {
   return categories.find((category) => category.id === id);
 }
 
+const defaultCategoryImages = {
+  "guia-cultural": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+  "servicos": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80",
+  "curiosidades": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80",
+  "culinaria": "https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1200&q=80",
+  "turismo": "https://images.unsplash.com/photo-1504851149312-4006c90434a1?auto=format&fit=crop&w=1200&q=80",
+  "tradicoes": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1200&q=80"
+};
+
+function getContentImage(item) {
+  return item.image || defaultCategoryImages[item.category] || defaultCategoryImages["guia-cultural"];
+}
+
 function normalize(value) {
   return value.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
@@ -359,11 +372,14 @@ function renderCard(item) {
     <article class="content-card">
       <div class="card-topline">
         <span>${category?.name || "Categoria"}</span>
-        <button class="icon-button ${isFavorite ? "active" : ""}" type="button" data-favorite="${item.id}" aria-label="Favoritar ${
-    item.title
-  }">
-          ${isFavorite ? "★" : "☆"}
-        </button>
+        <div class="card-actions">
+          <button class="icon-button ${isFavorite ? "active" : ""}" type="button" data-favorite="${item.id}" aria-label="Favoritar ${item.title}">
+            ${isFavorite ? "★" : "☆"}
+          </button>
+          <button class="icon-button share" type="button" data-share="${item.id}" aria-label="Compartilhar ${item.title}">
+            ⤴
+          </button>
+        </div>
       </div>
       <h3>${item.title}</h3>
       <p>${item.summary}</p>
@@ -405,13 +421,18 @@ function renderDetail(itemId) {
 
   elements.detailCard.innerHTML = `
     <button class="modal-close" id="close-detail" type="button" aria-label="Fechar detalhes">Fechar</button>
+    <div class="detail-hero">
+      <img src="${getContentImage(item)}" alt="Imagem de ${item.title}" />
+    </div>
     <p class="eyebrow">${category?.name || "Categoria"} - ${item.city}</p>
     <h2 id="detail-title">${item.title}</h2>
     <p>${item.detail}</p>
+    <div class="detail-meta">
+      <span>${item.type}</span>
+      ${shouldShowMap(item) ? `<span class="detail-location">Localização disponível</span>` : `<span class="detail-location">Referência: ${item.city}</span>`}
+    </div>
     <div class="tag-list">
       ${item.tags.map((tag) => `<span>${tag}</span>`).join("")}
-    </div>
-    <div class="detail-actions">
       <button class="button primary" type="button" data-favorite="${item.id}">
         ${favorites.includes(item.id) ? "Remover favorito" : "Adicionar favorito"}
       </button>
