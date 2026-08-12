@@ -474,12 +474,7 @@ a:focus-visible {
   height: 100%;
 }
 
-.content-card .card-image img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
+/* Removed image-specific rules: images are no longer rendered in cards */
 
 .content-card .card-body {
   padding: 22px;
