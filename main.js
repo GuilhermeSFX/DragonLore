@@ -329,9 +329,12 @@ function renderCategories() {
     ]
       .map(
         (category) => `
-          <button class="filter-chip ${category.id === activeCategory ? "active" : ""}" type="button" data-category="${
-          category.id
-        }">
+          <button
+            class="filter-chip ${category.id === activeCategory ? "active" : ""}"
+            type="button"
+            data-category="${category.id}"
+            aria-pressed="${category.id === activeCategory}"
+          >
             ${category.name}
           </button>
         `
@@ -433,6 +436,8 @@ function renderDetail(itemId) {
     </div>
     <div class="tag-list">
       ${item.tags.map((tag) => `<span>${tag}</span>`).join("")}
+    </div>
+    <div class="detail-actions">
       <button class="button primary" type="button" data-favorite="${item.id}">
         ${favorites.includes(item.id) ? "Remover favorito" : "Adicionar favorito"}
       </button>
@@ -520,6 +525,12 @@ function bindEvents() {
 
   elements.detailModal?.addEventListener("close", () => {
     selectedItemId = null;
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && elements.detailModal?.open) {
+      elements.detailModal.close();
+    }
   });
 
   document.addEventListener("click", (event) => {
