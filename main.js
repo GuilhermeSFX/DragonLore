@@ -238,6 +238,43 @@ function slugify(value) {
   return normalize(value).replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
+function shouldShowMap(item) {
+  if (!item.location || normalize(item.city) === "nacional") {
+    return false;
+  }
+
+  const locationCategories = ["turismo", "servicos"];
+  if (locationCategories.includes(item.category)) {
+    return true;
+  }
+
+  const locationKeywords = [
+    "restaurantes",
+    "restaurante",
+    "museus",
+    "igrejas",
+    "pracas",
+    "trilhas",
+    "mirantes",
+    "aeroporto",
+    "rodoviarias",
+    "rodoviaria",
+    "hospitais",
+    "farmacias",
+    "delegacias",
+    "bombeiros",
+    "bancos",
+    "correios",
+    "monumento",
+    "terminal",
+    "estacao",
+    "metro",
+    "parque"
+  ];
+
+  return locationKeywords.some((keyword) => normalize(item.type).includes(keyword));
+}
+
 function getFilteredContent() {
   const searchTerm = normalize(elements.search.value.trim());
   const city = elements.cityFilter.value;
@@ -379,7 +416,7 @@ function renderDetail(itemId) {
         ${favorites.includes(item.id) ? "Remover favorito" : "Adicionar favorito"}
       </button>
       <button class="button secondary" type="button" data-share="${item.id}">Compartilhar</button>
-      ${item.location ? `<a class="button ghost" href="${item.location}" target="_blank" rel="noreferrer">Abrir mapa</a>` : ""}
+      ${shouldShowMap(item) ? `<a class="button ghost" href="${item.location}" target="_blank" rel="noreferrer">Abrir mapa</a>` : ""}
     </div>
     <div class="related-block">
       <h3>Conteudos relacionados</h3>
@@ -425,7 +462,7 @@ async function shareItem(itemId) {
   const shareData = {
     title: `Dragon Lore - ${item.title}`,
     text: item.summary,
-    url: `${window.location.origin}${window.location.pathname}#detalhes`
+    url: `${window.location.origin}${window.location.pathname}?item=${encodeURIComponent(item.id)}`
   };
 
   if (navigator.share) {
