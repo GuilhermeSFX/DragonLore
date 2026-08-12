@@ -163,13 +163,17 @@ const phaseTwoContent = [
 initialContent.push(...phaseTwoContent);
 
 const storageKeys = {
-  favorites: "dragonLoreFavorites"
+  favorites: "dragonLoreFavorites",
+  nickname: "dragonloreNickname",
+  lastDiscovery: "dragonloreLastDiscovery"
 };
 
 let contentItems = initialContent;
 let favorites = loadFavorites();
-let activeCategory = "todas";
-let selectedItemId = null;
+const requestedCategory = new URLSearchParams(window.location.search).get("categoria");
+const requestedItem = new URLSearchParams(window.location.search).get("item");
+let activeCategory = categories.some((category) => category.id === requestedCategory) ? requestedCategory : "todas";
+let selectedItemId = initialContent.some((item) => item.id === requestedItem) ? requestedItem : null;
 
 const elements = {
   menuToggle: document.querySelector(".menu-toggle"),
@@ -184,6 +188,15 @@ const elements = {
   search: document.querySelector("#global-search"),
   cityFilter: document.querySelector("#city-filter"),
   detailCard: document.querySelector("#detail-card"),
+  detailModal: document.querySelector("#detail-modal"),
+  closeDetail: document.querySelector("#close-detail"),
+  nicknameForm: document.querySelector("#nickname-form"),
+  nicknameInput: document.querySelector("#nickname-input"),
+  nicknameDisplay: document.querySelector("#nickname-display"),
+  nicknameValue: document.querySelector("#nickname-value"),
+  editNickname: document.querySelector("#edit-nickname"),
+  favoritesCount: document.querySelector("#favorites-count"),
+  lastDiscovery: document.querySelector("#last-discovery")
 };
 
 function loadFavorites() {
@@ -193,6 +206,24 @@ function loadFavorites() {
 
 function saveFavorites() {
   localStorage.setItem(storageKeys.favorites, JSON.stringify(favorites));
+}
+
+function getFavoriteItems() {
+  return contentItems.filter((item) => favorites.includes(item.id));
+}
+
+function renderExplorerStatus() {
+  if (!elements.nicknameForm) return;
+
+  const nickname = localStorage.getItem(storageKeys.nickname) || "";
+  const lastDiscovery = localStorage.getItem(storageKeys.lastDiscovery) || "Nenhuma ainda";
+
+  elements.nicknameForm.hidden = Boolean(nickname);
+  elements.nicknameDisplay.hidden = !nickname;
+  elements.nicknameInput.value = nickname;
+  elements.nicknameValue.textContent = nickname;
+  elements.favoritesCount.textContent = getFavoriteItems().length;
+  elements.lastDiscovery.textContent = lastDiscovery;
 }
 
 function getCategory(id) {
@@ -224,39 +255,45 @@ function getFilteredContent() {
 }
 
 function renderCategories() {
-  elements.categoryGrid.innerHTML = categories
-    .map(
-      (category) => `
-        <article class="category-card">
-          <span class="category-icon" aria-hidden="true">${category.icon}</span>
-          <h3>${category.name}</h3>
-          <p>${category.description}</p>
-          <button class="text-button" type="button" data-category-link="${category.id}">
-            Ver categoria
-          </button>
-        </article>
-      `
-    )
-    .join("");
+  if (elements.categoryGrid) {
+    elements.categoryGrid.innerHTML = categories
+      .map(
+        (category) => `
+          <article class="category-card">
+            <span class="category-icon" aria-hidden="true">${category.icon}</span>
+            <h3>${category.name}</h3>
+            <p>${category.description}</p>
+            <a class="text-button" href="conteudos.html?categoria=${category.id}#conteudos">
+              Ver categoria
+            </a>
+          </article>
+        `
+      )
+      .join("");
+  }
 
-  elements.categoryFilters.innerHTML = [
-    { id: "todas", name: "Todas" },
-    ...categories
-  ]
-    .map(
-      (category) => `
-        <button class="filter-chip ${category.id === activeCategory ? "active" : ""}" type="button" data-category="${
-        category.id
-      }">
-          ${category.name}
-        </button>
-      `
-    )
-    .join("");
+  if (elements.categoryFilters) {
+    elements.categoryFilters.innerHTML = [
+      { id: "todas", name: "Todas" },
+      ...categories
+    ]
+      .map(
+        (category) => `
+          <button class="filter-chip ${category.id === activeCategory ? "active" : ""}" type="button" data-category="${
+          category.id
+        }">
+            ${category.name}
+          </button>
+        `
+      )
+      .join("");
+  }
 
 }
 
 function renderCities() {
+  if (!elements.cityFilter) return;
+
   const currentValue = elements.cityFilter.value || "todas";
   const cities = [...new Set(contentItems.map((item) => item.city))].sort();
 
@@ -269,6 +306,8 @@ function renderCities() {
 }
 
 function renderContent() {
+  if (!elements.contentGrid) return;
+
   const filtered = getFilteredContent();
   elements.resultMeta.textContent = `${filtered.length} conteudo(s) encontrado(s)`;
   elements.emptyState.hidden = filtered.length > 0;
@@ -301,31 +340,34 @@ function renderCard(item) {
 }
 
 function renderFavorites() {
-  const favoriteItems = contentItems.filter((item) => favorites.includes(item.id));
+  if (!elements.favoritesGrid) return;
+
+  const favoriteItems = getFavoriteItems();
   elements.favoritesEmpty.hidden = favoriteItems.length > 0;
   elements.favoritesGrid.innerHTML = favoriteItems.map(renderCard).join("");
 }
 
 function renderDetail(itemId) {
+  if (!elements.detailCard) return;
+
   const item = contentItems.find((content) => content.id === itemId);
 
   if (!item) {
     selectedItemId = null;
-    elements.detailCard.innerHTML = `
-      <p class="eyebrow">Detalhes</p>
-      <h2 id="detail-title">Selecione um conteudo</h2>
-      <p>Escolha um card para visualizar informacoes completas, itens relacionados e acoes uteis.</p>
-    `;
+    elements.detailModal?.close();
     return;
   }
 
   selectedItemId = item.id;
+  localStorage.setItem(storageKeys.lastDiscovery, item.title);
+  renderExplorerStatus();
   const category = getCategory(item.category);
   const related = contentItems
     .filter((candidate) => candidate.id !== item.id && candidate.category === item.category)
     .slice(0, 3);
 
   elements.detailCard.innerHTML = `
+    <button class="modal-close" id="close-detail" type="button" aria-label="Fechar detalhes">Fechar</button>
     <p class="eyebrow">${category?.name || "Categoria"} - ${item.city}</p>
     <h2 id="detail-title">${item.title}</h2>
     <p>${item.detail}</p>
@@ -349,13 +391,18 @@ function renderDetail(itemId) {
     </div>
   `;
 
-  document.querySelector("#detalhes").scrollIntoView({ behavior: "smooth", block: "start" });
+  if (elements.detailModal && !elements.detailModal.open) {
+    elements.detailModal.showModal();
+  }
 }
 
 function renderAll() {
+  renderExplorerStatus();
   renderCategories();
-  renderCities();
-  renderContent();
+  if (elements.contentGrid) {
+    renderCities();
+    renderContent();
+  }
   renderFavorites();
   if (selectedItemId) {
     renderDetail(selectedItemId);
@@ -391,17 +438,34 @@ async function shareItem(itemId) {
 }
 
 function bindEvents() {
-  elements.menuToggle.addEventListener("click", () => {
+  elements.menuToggle?.addEventListener("click", () => {
     const isOpen = elements.navLinks.classList.toggle("open");
     elements.menuToggle.setAttribute("aria-expanded", isOpen.toString());
   });
 
-  elements.search.addEventListener("input", renderContent);
-  elements.cityFilter.addEventListener("change", renderContent);
+  elements.search?.addEventListener("input", renderContent);
+  elements.cityFilter?.addEventListener("change", renderContent);
+  elements.nicknameForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const nickname = elements.nicknameInput.value.trim();
+    if (!nickname) return;
+
+    localStorage.setItem(storageKeys.nickname, nickname);
+    renderExplorerStatus();
+  });
+
+  elements.editNickname?.addEventListener("click", () => {
+    elements.nicknameForm.hidden = false;
+    elements.nicknameDisplay.hidden = true;
+    elements.nicknameInput.focus();
+  });
+
+  elements.detailModal?.addEventListener("close", () => {
+    selectedItemId = null;
+  });
 
   document.addEventListener("click", (event) => {
     const categoryButton = event.target.closest("[data-category]");
-    const categoryLink = event.target.closest("[data-category-link]");
     const favoriteButton = event.target.closest("[data-favorite]");
     const detailButton = event.target.closest("[data-detail]");
     const shareButton = event.target.closest("[data-share]");
@@ -411,18 +475,20 @@ function bindEvents() {
       renderAll();
     }
 
-    if (categoryLink) {
-      activeCategory = categoryLink.dataset.categoryLink;
-      renderAll();
-      document.querySelector("#conteudos").scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
     if (favoriteButton) {
       toggleFavorite(favoriteButton.dataset.favorite);
     }
 
     if (detailButton) {
-      renderDetail(detailButton.dataset.detail);
+      if (elements.detailCard) {
+        renderDetail(detailButton.dataset.detail);
+      } else {
+        window.location.href = `conteudos.html?item=${encodeURIComponent(detailButton.dataset.detail)}`;
+      }
+    }
+
+    if (event.target.closest("#close-detail")) {
+      elements.detailModal?.close();
     }
 
     if (shareButton) {

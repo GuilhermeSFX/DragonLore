@@ -29,7 +29,7 @@
 
       <ul class="nav-links" id="main-menu">
         <li><a href="#categorias">Categorias</a></li>
-        <li><a href="#conteudos">Conteudos</a></li>
+        <li><a href="conteudos.html">Conteudos</a></li>
         <li><a href="#favoritos">Favoritos</a></li>
       </ul>
     </nav>
@@ -43,80 +43,42 @@
           ligados a cultura chinesa em um portal simples, responsivo e preparado para crescer.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#conteudos">Explorar conteudos</a>
+          <a class="button primary" href="conteudos.html">Explorar conteudos</a>
+          <a class="button secondary" href="#favoritos">Ver favoritos</a>
         </div>
       </div>
 
-      <div class="hero-panel" aria-label="Sobre o Dragon Lore">
+      <aside class="hero-panel explorer-status" aria-labelledby="explorer-status-title">
         <span class="hero-symbol" aria-hidden="true">中</span>
-
-        <dl>
+        <h2 id="explorer-status-title">Status do Explorador</h2>
+        <form class="nickname-form" id="nickname-form">
+          <label for="nickname-input">Escolha seu apelido</label>
           <div>
-            <dt>Exploração</dt>
-            <dd>Mitologia</dd>
+            <input id="nickname-input" type="text" maxlength="40" autocomplete="nickname" />
+            <button class="button small" type="submit">Salvar</button>
           </div>
-
-          <div>
-            <dt>Criaturas</dt>
-            <dd>Dragões e lendas</dd>
-          </div>
-
-          <div>
-            <dt>Descoberta</dt>
-            <dd>6 categorias</dd>
-          </div>
-        </dl>
-      </div>
+        </form>
+        <div class="explorer-status-list">
+          <p id="nickname-display" hidden>
+            Apelido: <strong id="nickname-value"></strong>
+            <button class="edit-nickname" id="edit-nickname" type="button" aria-label="Alterar apelido">Editar</button>
+          </p>
+          <p>Favoritos: <strong id="favorites-count">0</strong></p>
+          <p>Última descoberta: <strong id="last-discovery">Nenhuma ainda</strong></p>
+        </div>
+      </aside>
     </section>
   </header>
 
   <main>
-    <section class="toolbar-section" aria-label="Busca e filtros">
-      <div class="search-card">
-        <label for="global-search">Buscar no Dragon Lore</label>
-        <div class="search-row">
-          <input id="global-search" type="search" placeholder="Digite cidade, prato, tradicao, monumento..."
-            autocomplete="off" />
-          <select id="city-filter" aria-label="Filtrar por cidade">
-            <option value="todas">Todas as cidades</option>
-          </select>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="categorias" aria-labelledby="categories-title">
+    <section class="section home-categories" id="categorias" aria-labelledby="categories-title">
       <div class="section-heading">
         <p class="eyebrow">Navegacao por categorias</p>
       </div>
       <div class="category-grid" id="category-grid"></div>
     </section>
 
-    <section class="section content-layout" id="conteudos" aria-labelledby="content-title">
-      <aside class="filter-panel" aria-label="Filtros de categoria">
-        <h2>Filtros</h2>
-        <div id="category-filters" class="filter-list"></div>
-      </aside>
-
-      <div class="content-results">
-        <div class="section-heading compact">
-          <p class="eyebrow">Conteudos locais</p>
-          <h2 id="content-title">Itens culturais encontrados</h2>
-        </div>
-        <div class="result-meta" id="result-meta" aria-live="polite"></div>
-        <div class="card-grid" id="content-grid"></div>
-        <p class="empty-state" id="empty-state" hidden>Nenhum conteudo encontrado para a busca atual.</p>
-      </div>
-    </section>
-
-    <section class="section detail-section" id="detalhes" aria-labelledby="detail-title">
-      <div class="detail-card" id="detail-card">
-        <p class="eyebrow">Detalhes</p>
-        <h2 id="detail-title">Selecione um conteudo</h2>
-        <p>Escolha um card para visualizar informacoes completas, itens relacionados e acoes uteis.</p>
-      </div>
-    </section>
-
-    <section class="section" id="favoritos" aria-labelledby="favorites-title">
+    <section class="section home-favorites" id="favoritos" aria-labelledby="favorites-title">
       <div class="section-heading">
         <p class="eyebrow">Salvo no navegador</p>
         <h2 id="favorites-title">Favoritos</h2>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conteúdos culturais do Dragon Lore." />
+  <title>Conteúdos | Dragon Lore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header content-page-header">
+    <nav class="navbar" aria-label="Navegacao principal">
+      <a class="brand" href="index.html" aria-label="Dragon Lore inicio"><span class="brand-mark" aria-hidden="true">龍</span><span>Dragon Lore</span></a>
+      <button class="menu-toggle" type="button" aria-controls="main-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="main-menu">
+        <li><a href="index.html#categorias">Categorias</a></li>
+        <li><a href="conteudos.html" aria-current="page">Conteudos</a></li>
+        <li><a href="index.html#favoritos">Favoritos</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="toolbar-section" aria-label="Busca e filtros">
+      <div class="search-card">
+        <label for="global-search">Buscar no Dragon Lore</label>
+        <div class="search-row">
+          <input id="global-search" type="search" placeholder="Digite cidade, prato, tradicao, monumento..." autocomplete="off" />
+          <select id="city-filter" aria-label="Filtrar por cidade"><option value="todas">Todas as cidades</option></select>
+        </div>
+      </div>
+    </section>
+    <section class="section content-layout" id="conteudos" aria-labelledby="content-title">
+      <aside class="filter-panel" aria-label="Filtros de categoria"><h2>Filtros</h2><div id="category-filters" class="filter-list"></div></aside>
+      <div class="content-results">
+        <div class="section-heading compact"><p class="eyebrow">Conteudos locais</p><h1 id="content-title">Itens culturais encontrados</h1></div>
+        <div class="result-meta" id="result-meta" aria-live="polite"></div>
+        <div class="card-grid" id="content-grid"></div>
+        <p class="empty-state" id="empty-state" hidden>Nenhum conteudo encontrado para a busca atual.</p>
+      </div>
+    </section>
+  </main>
+  <dialog class="detail-modal" id="detail-modal" aria-labelledby="detail-title">
+    <div class="detail-card" id="detail-card">
+      <button class="modal-close" id="close-detail" type="button" aria-label="Fechar detalhes">Fechar</button>
+    </div>
+  </dialog>
+  <footer class="site-footer"><p>Dragon Lore MVP - HTML5, CSS3 e JavaScript com dados locais.</p></footer>
+  <script src="main.js"></script>
+</body>
+</html>

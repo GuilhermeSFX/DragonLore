@@ -25,12 +25,15 @@
 - Filtro por cidade e categoria.
 - Estados vazios para buscas sem resultados.
 - Conteúdos relacionados no detalhe.
+- Status do Explorador com apelido, contagem de favoritos e última descoberta salvos no navegador.
+- Separação entre a Home, a página de conteúdos e a área de favoritos da Home.
 
 ### Critérios de aceite
 
 - A busca encontra conteúdo por dados relevantes da base local.
-- Os filtros atualizam os resultados sem recarregar a página.
+- Os filtros atualizam os resultados sem recarregar a página de conteúdos.
 - O usuário consegue abrir detalhes e navegar por itens relacionados.
+- O usuário consegue acessar os favoritos pela Home e visualizar a contagem atual no Status do Explorador.
 
 ## Fase 4 — Interações e referências visuais — futura
 
@@ -48,4 +51,3 @@
 
 - Priorizar expansões de conteúdo e múltiplas regiões.
 - Avaliar integrações e arquitetura somente quando houver escopo aprovado.
-
