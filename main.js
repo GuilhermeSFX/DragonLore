@@ -431,7 +431,7 @@ function renderCard(item) {
           <span>${item.city}</span>
           <span>${item.type}</span>
         </div>
-        <button class="button small" type="button" data-detail="${item.id}">Ver detalhes</button>
+        <button class="button detail-button" type="button" data-detail="${item.id}">Ver detalhes</button>
       </div>
     </article>
   `;
