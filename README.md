@@ -39,7 +39,7 @@ DragonLore/
 
 ## Como acessar:
 
-- Página do projeto: `https://guilhermesfx.github.io/DragonLore/`
+- Página do projeto: [https://guilhermesfx.github.io/DragonLore/](https://guilhermesfx.github.io/DragonLore/)
 
 ## Tecnologias
 
